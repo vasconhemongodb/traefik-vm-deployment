@@ -1,0 +1,7 @@
+traefik/data/acme.json
+.DS_Store
+
+# Environment variables
+.env
+.env.*
+!.env.example
