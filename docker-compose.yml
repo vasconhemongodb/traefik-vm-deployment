@@ -26,6 +26,12 @@ services:
       - "./traefik/data/acme.json:/letscert/acme.json"
     networks:
       - web-proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.${DOMAIN}`)"
+      - "traefik.http.routers.traefik.service=api@internal"
+      - "traefik.http.routers.traefik.entrypoints=websecure"
+      - "traefik.http.routers.traefik.tls.certresolver=myresolver"
 
 networks:
   web-proxy:
